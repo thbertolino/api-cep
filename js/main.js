@@ -34,8 +34,8 @@ const pesquisarCep = async() => {
     const cep = document.getElementById('cep').value.replace("-","");
     const url = `https://viacep.com.br/ws/${cep}/json/`;
     if (cepValido(cep)){
-        const dados = await fetch(url);
-        const endereco = await dados.json();
+        const promessa = await fetch(url);
+        const endereco = await promessa.json();
         if (endereco.hasOwnProperty('erro')){
             document.getElementById('endereco').value = 'CEP não encontrado!';
         }else {
